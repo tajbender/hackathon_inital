@@ -8,6 +8,25 @@
 
     <Grid
         x:Name="ContentArea">
+        <Grid.RowDefinitions>
+            <RowDefinition
+                Height="Auto" />
+            <RowDefinition
+                Height="*" />
+        </Grid.RowDefinitions>
+
+
+
+        <!--<TextBlock
+            Grid.Row="0"
+            Text="Workbench"
+            Style="{StaticResource TitleTextBlockStyle}" />
+
+        <PersonPicture
+            Grid.Row="1"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Top"
+            ProfilePicture="https://learn.microsoft.com/windows/uwp/contacts-and-calendar/images/shoulder-tap-static-payload.png" />-->
 
     </Grid>
 </Page>

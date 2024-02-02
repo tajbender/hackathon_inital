@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- 
+    For more information on using the Blank Page template, see http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
+-->
 <UserControl
-    x:Class="electrifier.WebBrowserNavigationControl"
+    x:Class="electrifier.Controls.WebBrowserNavigationControl"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:electrifier"
