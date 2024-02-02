@@ -4,18 +4,96 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodels="using:electrifier.ViewModels"
+    d:DataContext="{d:DesignInstance Type=viewmodels:WorkbenchViewModel}"
     mc:Ignorable="d">
 
     <Grid
         x:Name="ContentArea">
-        <Grid.RowDefinitions>
-            <RowDefinition
-                Height="Auto" />
-            <RowDefinition
-                Height="*" />
-        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition
+                Width="*" />
+            <ColumnDefinition
+                Width="Auto" />
+        </Grid.ColumnDefinitions>
 
-        <StackPanel
+        <ScrollViewer
+            Grid.Column="0"
+            ZoomMode="Enabled"
+            IsTabStop="True"
+            IsVerticalScrollChainingEnabled="True"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            HorizontalScrollMode="Enabled"
+            HorizontalScrollBarVisibility="Auto"
+            VerticalScrollMode="Enabled"
+            VerticalScrollBarVisibility="Auto">
+            <!-- ViewChanged="ScrollViewerControl_ViewChanged" -->
+            <StackPanel>
+                <Image
+                    Source="ms-appx:///Assets/SampleMedia/cliff.jpg"
+                    AutomationProperties.Name="cliff"
+                    Stretch="None"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top" />
+                <StackPanel
+                    BorderBrush="Azure"
+                    BorderThickness="1"
+                    Grid.Row="0"
+                    Margin="12,0,12,24">
+                    <TextBlock
+                        Text="Welcome to the Workbench"
+                        Style="{StaticResource SubheaderTextBlockStyle}" />
+                    <TextBlock
+                        Text="This is the Workbench page. You can use this page to create and manage your projects."
+                        Style="{StaticResource BodyTextBlockStyle}" />
+                    <PersonPicture
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center"
+                        ProfilePicture="https://learn.microsoft.com/windows/uwp/contacts-and-calendar/images/shoulder-tap-static-payload.png" />
+                </StackPanel>
+            </StackPanel>
+
+        </ScrollViewer>
+
+
+        <ScrollViewer
+            Grid.Column="1"
+            ZoomMode="Enabled"
+            IsTabStop="True"
+            IsVerticalScrollChainingEnabled="True"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            HorizontalScrollMode="Enabled"
+            HorizontalScrollBarVisibility="Auto"
+            VerticalScrollMode="Enabled"
+            VerticalScrollBarVisibility="Auto">
+            <!-- ViewChanged="ScrollViewerControl_ViewChanged" -->
+            <StackPanel>
+                <Image
+                    Source="ms-appx:///Assets/SampleMedia/cliff.jpg"
+                    AutomationProperties.Name="cliff"
+                    Stretch="None"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top" />
+                <StackPanel
+                    BorderBrush="DarkRed"
+                    BorderThickness="1"
+                    Grid.Row="1"
+                    Margin="12,0,12,24">
+                    <TextBlock
+                        Text="Calendar"
+                        Style="{StaticResource SubheaderTextBlockStyle}" />
+                    <TextBlock
+                        Text="This is the Calendar view. You can use this view to manage your schedule."
+                        Style="{StaticResource BodyTextBlockStyle}" />
+                </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
+
+        <!--<StackPanel
+            BorderBrush="Azure"
+            BorderThickness="1"
             Grid.Row="0"
             Margin="12,0,12,24">
             <TextBlock
@@ -28,9 +106,11 @@
                 HorizontalAlignment="Right"
                 VerticalAlignment="Center"
                 ProfilePicture="https://learn.microsoft.com/windows/uwp/contacts-and-calendar/images/shoulder-tap-static-payload.png" />
-        </StackPanel>
+        </StackPanel>-->
 
-        <StackPanel
+        <!--<StackPanel
+            BorderBrush="DarkRed"
+            BorderThickness="1"
             Grid.Row="1"
             Margin="12,0,12,24">
             <TextBlock
@@ -39,7 +119,7 @@
             <TextBlock
                 Text="This is the Calendar view. You can use this view to manage your schedule."
                 Style="{StaticResource BodyTextBlockStyle}" />
-        </StackPanel>
+        </StackPanel>-->
     </Grid>
 </Page>
 
