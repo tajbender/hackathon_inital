@@ -4,6 +4,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodels="using:electrifier.ViewModels"
+    d:DataContext="{d:DesignInstance Type=viewmodels:WorkbenchViewModel}"
     mc:Ignorable="d">
 
     <Grid
@@ -16,6 +18,8 @@
         </Grid.RowDefinitions>
 
         <StackPanel
+            BorderBrush="Azure"
+            BorderThickness="1"
             Grid.Row="0"
             Margin="12,0,12,24">
             <TextBlock
@@ -31,6 +35,8 @@
         </StackPanel>
 
         <StackPanel
+            BorderBrush="DarkRed"
+            BorderThickness="1"
             Grid.Row="1"
             Margin="12,0,12,24">
             <TextBlock
