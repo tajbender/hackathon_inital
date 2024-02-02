@@ -15,18 +15,23 @@
                 Height="*" />
         </Grid.RowDefinitions>
 
-
-
-        <!--<TextBlock
-            Grid.Row="0"
-            Text="Workbench"
-            Style="{StaticResource TitleTextBlockStyle}" />
+        <StackPanel Grid.Row="0"
+            Grid.Column="0"
+            Margin="12,0,12,24">
+            <TextBlock
+                Text="Welcome to the Workbench"
+                Style="{StaticResource SubheaderTextBlockStyle}" />
+            <TextBlock
+                Text="This is the Workbench page. You can use this page to create and manage your projects."
+                Style="{StaticResource BodyTextBlockStyle}" />
+        </StackPanel>
 
         <PersonPicture
-            Grid.Row="1"
+            Grid.Row="0"
+            Grid.Column="0"
             HorizontalAlignment="Right"
             VerticalAlignment="Top"
-            ProfilePicture="https://learn.microsoft.com/windows/uwp/contacts-and-calendar/images/shoulder-tap-static-payload.png" />-->
+            ProfilePicture="https://learn.microsoft.com/windows/uwp/contacts-and-calendar/images/shoulder-tap-static-payload.png" />
 
     </Grid>
 </Page>
