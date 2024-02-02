@@ -12,7 +12,7 @@
     <Grid>
         <Grid
             x:Name="AppTitleBar"
-            Canvas.ZIndex="1"
+        Canvas.ZIndex="1"
             Height="{Binding ElementName=NavigationViewControl, Path=CompactPaneLength}"
             IsHitTestVisible="True"
             VerticalAlignment="Top">
@@ -52,7 +52,8 @@
                     <NavigationViewItem.Icon>
                         <FontIcon
                             FontFamily="{StaticResource SymbolThemeFontFamily}"
-                            Glyph="&#xe7c3;" />
+                            Glyph="&#xe8d1;" />
+                        <!-- Glyph="&#xe8d1;" => "GotoToday" is the icon for the Workbench -->
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItem
