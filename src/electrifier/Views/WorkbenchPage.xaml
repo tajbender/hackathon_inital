@@ -15,8 +15,8 @@
                 Height="*" />
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="0"
-            Grid.Column="0"
+        <StackPanel
+            Grid.Row="0"
             Margin="12,0,12,24">
             <TextBlock
                 Text="Welcome to the Workbench"
@@ -24,14 +24,61 @@
             <TextBlock
                 Text="This is the Workbench page. You can use this page to create and manage your projects."
                 Style="{StaticResource BodyTextBlockStyle}" />
+            <PersonPicture
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center"
+                ProfilePicture="https://learn.microsoft.com/windows/uwp/contacts-and-calendar/images/shoulder-tap-static-payload.png" />
         </StackPanel>
 
-        <PersonPicture
-            Grid.Row="0"
-            Grid.Column="0"
-            HorizontalAlignment="Right"
-            VerticalAlignment="Top"
-            ProfilePicture="https://learn.microsoft.com/windows/uwp/contacts-and-calendar/images/shoulder-tap-static-payload.png" />
-
+        <StackPanel
+            Grid.Row="1"
+            Margin="12,0,12,24">
+            <TextBlock
+                Text="Calendar"
+                Style="{StaticResource SubheaderTextBlockStyle}" />
+            <TextBlock
+                Text="This is the Calendar view. You can use this view to manage your schedule."
+                Style="{StaticResource BodyTextBlockStyle}" />
+        </StackPanel>
     </Grid>
 </Page>
+
+<!--
+    <RelativePanel
+            Grid.Row="1">
+            <Rectangle
+                x:Name="Rectangle1"
+                Fill="Red"
+                Height="50"
+                Width="50" />
+            <Rectangle
+                x:Name="Rectangle2"
+                Fill="Blue"
+                Height="50"
+                Width="50"
+                RelativePanel.RightOf="Rectangle1"
+                Margin="8,0,0,0" />
+            <Rectangle
+                x:Name="Rectangle3"
+                Fill="Green"
+                Height="50"
+                Width="50"
+                RelativePanel.AlignRightWithPanel="True" />
+            <Rectangle
+                x:Name="Rectangle4"
+                Fill="Yellow"
+                Height="50"
+                Width="50"
+                RelativePanel.Below="Rectangle3"
+                RelativePanel.AlignHorizontalCenterWith="Rectangle3"
+                Margin="0,8,0,0" />
+            <CalendarView
+                x:Name="CalenderView"
+                SelectionMode="Single"
+                IsGroupLabelVisible="True"
+                IsOutOfScopeEnabled="True"
+                Language="en"
+                CalendarIdentifier="GregorianCalendar" />
+        </RelativePanel>
+    -->
+    
