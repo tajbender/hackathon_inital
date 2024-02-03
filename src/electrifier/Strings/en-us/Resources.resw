@@ -192,7 +192,7 @@
     <value>WebView</value>
   </data>
   <data name="Shell_Workbench.Content" xml:space="preserve">
-    <value>Workbench</value>
+    <value>Welcome to the Workbench</value>
   </data>
   <data name="WebView_FailedMessage.Text" xml:space="preserve">
     <value>Page failed to load. Check connection and reload.</value>

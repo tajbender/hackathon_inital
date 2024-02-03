@@ -1,14 +1,66 @@
 ﻿<Page
     x:Class="electrifier.Views.WorkbenchPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    xmlns:controls="using:CommunityToolkit.WinUI.Controls"
     xmlns:viewmodels="using:electrifier.ViewModels"
     d:DataContext="{d:DesignInstance Type=viewmodels:WorkbenchViewModel}"
     mc:Ignorable="d">
 
-    <Grid
+    <!-- 
+    xmlns:controls="using:CommunityToolkit.WinUI.Controls"
+    -->
+    
+    <Page.Resources>
+        <DataTemplate
+            x:Key="StaggeredTemplate">
+            <Grid
+                Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                BorderThickness="1"
+                CornerRadius="{StaticResource ControlCornerRadius}">
+                <Border
+                    Width="{Binding Width}"
+                    Height="{Binding Height}"
+                    Margin="4"
+                    CornerRadius="{StaticResource ControlCornerRadius}">
+                    <Border.Background>
+                        <SolidColorBrush
+                            Color="{Binding Color}" />
+                    </Border.Background>
+                    <TextBlock
+                        Margin="6,4,4,4"
+                        FontSize="16"
+                        Text="{Binding Index}" />
+                </Border>
+            </Grid>
+
+        </DataTemplate>
+    </Page.Resources>
+
+
+    <Grid>
+        <ScrollViewer>
+            <muxc:ItemsRepeater
+                x:Name="StaggeredRepeater"
+                ItemTemplate="{StaticResource StaggeredTemplate}">
+                <!-- 
+                ItemsSource="{x:Bind ColorsCollection, Mode=OneWay}" 
+                -->
+                <muxc:ItemsRepeater.Layout>
+                    <controls:StaggeredLayout
+                        ColumnSpacing="{x:Bind ColumnSpacing, Mode=OneWay}"
+                        DesiredColumnWidth="{x:Bind DesiredColumnWidth, Mode=OneWay}"
+                        RowSpacing="{x:Bind RowSpacing, Mode=OneWay}" />
+                </muxc:ItemsRepeater.Layout>
+            </muxc:ItemsRepeater>
+        </ScrollViewer>
+    </Grid>
+
+    <!--<Grid
         x:Name="ContentArea">
         <Grid.ColumnDefinitions>
             <ColumnDefinition
@@ -17,7 +69,7 @@
                 Width="250" />
         </Grid.ColumnDefinitions>
 
-        <!--#region Left Panel -->
+        --><!--#region Left Panel --><!--
 
         <ScrollViewer
             Grid.Column="0"
@@ -29,8 +81,8 @@
             HorizontalScrollBarVisibility="Auto"
             VerticalScrollMode="Enabled"
             VerticalScrollBarVisibility="Visible">
-            <!-- ZoomMode="Enabled" -->
-            <!-- ViewChanged="ScrollViewerControl_ViewChanged" -->
+            --><!-- ZoomMode="Enabled" -->
+            <!-- ViewChanged="ScrollViewerControl_ViewChanged" --><!--
             <Expander
                 BorderBrush="Blue"
                 IsExpanded="True"
@@ -39,14 +91,14 @@
                 VerticalAlignment="Stretch"
                 Header="This text is in the header">
                 <StackPanel>
-                    <!--<Image
+                    --><!--<Image
                         Source="https://learn.microsoft.com/windows/uwp/contacts-and-calendar/images/shoulder-tap-static-payload.png"
                         AutomationProperties.Name="My UserName"
                         MaxHeight="128"
                         MaxWidth="128"
                         HorizontalAlignment="Right"
                         VerticalAlignment="Stretch"
-                        Stretch="None" />-->
+                        Stretch="None" />--><!--
                     <StackPanel
                         BorderBrush="DarkGray"
                         BorderThickness="1"
@@ -66,9 +118,9 @@
                 </StackPanel>
             </Expander>
         </ScrollViewer>
-        <!--#endregion-->
+        --><!--#endregion-->
 
-        <!--#region Right Panel -->
+        <!--#region Right Panel --><!--
         <ScrollViewer
             Grid.Column="1"
             ZoomMode="Enabled"
@@ -79,7 +131,7 @@
             HorizontalScrollMode="Disabled"
             VerticalScrollMode="Enabled"
             VerticalScrollBarVisibility="Visible">
-            <!-- ViewChanged="ScrollViewerControl_ViewChanged" -->
+            --><!-- ViewChanged="ScrollViewerControl_ViewChanged" --><!--
             <StackPanel>
                 <Expander
                     BorderBrush="Yellow"
@@ -114,9 +166,9 @@
                         <TextBlock
                             x:Uid="Settings_About"
                             Style="{ThemeResource SubtitleTextBlockStyle}" />
-                        <!--<TextBlock
+                        --><!--<TextBlock
                             Text="{x:Static properties:Resources.XBindViewModelVersionDescriptionModeOneWay}"
-                            Style="{ThemeResource BodyTextBlockStyle}" />-->
+                            Style="{ThemeResource BodyTextBlockStyle}" />--><!--
 
                         <TextBlock
                             x:Uid="Settings_AboutDescription"
@@ -136,7 +188,7 @@
                 </StackPanel>
             </StackPanel>
         </ScrollViewer>
-        <!--#endregion-->
+        --><!--#endregion-->
 
         <!--<StackPanel
             BorderBrush="Azure"
@@ -166,6 +218,6 @@
             <TextBlock
                 Text="This is the Calendar view. You can use this view to manage your schedule."
                 Style="{StaticResource BodyTextBlockStyle}" />
-        </StackPanel>-->
-    </Grid>
+        </StackPanel>--><!--
+    </Grid>-->
 </Page>
