@@ -12,7 +12,7 @@
     <Grid>
         <Grid
             x:Name="AppTitleBar"
-        Canvas.ZIndex="1"
+            Canvas.ZIndex="1"
             Height="{Binding ElementName=NavigationViewControl, Path=CompactPaneLength}"
             IsHitTestVisible="True"
             VerticalAlignment="Top">

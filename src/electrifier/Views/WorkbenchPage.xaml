@@ -14,82 +14,129 @@
             <ColumnDefinition
                 Width="*" />
             <ColumnDefinition
-                Width="Auto" />
+                Width="250" />
         </Grid.ColumnDefinitions>
+
+        <!--#region Left Panel -->
 
         <ScrollViewer
             Grid.Column="0"
-            ZoomMode="Enabled"
             IsTabStop="True"
             IsVerticalScrollChainingEnabled="True"
-            HorizontalAlignment="Left"
+            HorizontalAlignment="Stretch"
             VerticalAlignment="Top"
             HorizontalScrollMode="Enabled"
             HorizontalScrollBarVisibility="Auto"
             VerticalScrollMode="Enabled"
-            VerticalScrollBarVisibility="Auto">
+            VerticalScrollBarVisibility="Visible">
+            <!-- ZoomMode="Enabled" -->
             <!-- ViewChanged="ScrollViewerControl_ViewChanged" -->
-            <StackPanel>
-                <Image
-                    Source="ms-appx:///Assets/SampleMedia/cliff.jpg"
-                    AutomationProperties.Name="cliff"
-                    Stretch="None"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Top" />
-                <StackPanel
-                    BorderBrush="Azure"
-                    BorderThickness="1"
-                    Grid.Row="0"
-                    Margin="12,0,12,24">
-                    <TextBlock
-                        Text="Welcome to the Workbench"
-                        Style="{StaticResource SubheaderTextBlockStyle}" />
-                    <TextBlock
-                        Text="This is the Workbench page. You can use this page to create and manage your projects."
-                        Style="{StaticResource BodyTextBlockStyle}" />
-                    <PersonPicture
+            <Expander
+                BorderBrush="Blue"
+                IsExpanded="True"
+                ExpandDirection="Down"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                Header="This text is in the header">
+                <StackPanel>
+                    <!--<Image
+                        Source="https://learn.microsoft.com/windows/uwp/contacts-and-calendar/images/shoulder-tap-static-payload.png"
+                        AutomationProperties.Name="My UserName"
+                        MaxHeight="128"
+                        MaxWidth="128"
                         HorizontalAlignment="Right"
-                        VerticalAlignment="Center"
-                        ProfilePicture="https://learn.microsoft.com/windows/uwp/contacts-and-calendar/images/shoulder-tap-static-payload.png" />
+                        VerticalAlignment="Stretch"
+                        Stretch="None" />-->
+                    <StackPanel
+                        BorderBrush="DarkGray"
+                        BorderThickness="1"
+                        Grid.Row="0"
+                        Margin="12,0,12,24">
+                        <TextBlock
+                            Text="Welcome to the Workbench"
+                            Style="{StaticResource SubheaderTextBlockStyle}" />
+                        <TextBlock
+                            Text="This is the Workbench page. You can use this page to create and manage your projects."
+                            Style="{StaticResource BodyTextBlockStyle}" />
+                        <PersonPicture
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center"
+                            ProfilePicture="https://learn.microsoft.com/windows/uwp/contacts-and-calendar/images/shoulder-tap-static-payload.png" />
+                    </StackPanel>
                 </StackPanel>
-            </StackPanel>
-
+            </Expander>
         </ScrollViewer>
+        <!--#endregion-->
 
-
+        <!--#region Right Panel -->
         <ScrollViewer
             Grid.Column="1"
             ZoomMode="Enabled"
             IsTabStop="True"
             IsVerticalScrollChainingEnabled="True"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            HorizontalScrollMode="Enabled"
-            HorizontalScrollBarVisibility="Auto"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            HorizontalScrollMode="Disabled"
             VerticalScrollMode="Enabled"
-            VerticalScrollBarVisibility="Auto">
+            VerticalScrollBarVisibility="Visible">
             <!-- ViewChanged="ScrollViewerControl_ViewChanged" -->
             <StackPanel>
-                <Image
-                    Source="ms-appx:///Assets/SampleMedia/cliff.jpg"
-                    AutomationProperties.Name="cliff"
-                    Stretch="None"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Top" />
+                <Expander
+                    BorderBrush="Yellow"
+                    IsExpanded="True"
+                    ExpandDirection="Down"
+                    VerticalAlignment="Stretch"
+                    Header="This text is in the header">
+
+                    <StackPanel>
+                        <TextBlock
+                            x:Uid="Settings_About"
+                            Style="{ThemeResource SubtitleTextBlockStyle}" />
+                        <Image
+                            Source="ms-appx:///Assets\LargeTile.scale-200.png"
+                            AutomationProperties.Name="cliff"
+                            MaxWidth="128"
+                            Stretch="None"
+                            MaxHeight="128"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top" />
+                    </StackPanel>
+                </Expander>
+
                 <StackPanel
                     BorderBrush="DarkRed"
                     BorderThickness="1"
                     Grid.Row="1"
                     Margin="12,0,12,24">
+
+                    <StackPanel
+                        Margin="{StaticResource XSmallTopMargin}">
+                        <TextBlock
+                            x:Uid="Settings_About"
+                            Style="{ThemeResource SubtitleTextBlockStyle}" />
+                        <!--<TextBlock
+                            Text="{x:Static properties:Resources.XBindViewModelVersionDescriptionModeOneWay}"
+                            Style="{ThemeResource BodyTextBlockStyle}" />-->
+
+                        <TextBlock
+                            x:Uid="Settings_AboutDescription"
+                            Margin="{StaticResource XSmallTopMargin}"
+                            Style="{ThemeResource BodyTextBlockStyle}" />
+                        <HyperlinkButton
+                            x:Uid="SettingsPage_PrivacyTermsLink"
+                            Margin="{StaticResource SettingsPageHyperlinkButtonMargin}" />
+                    </StackPanel>
+
                     <TextBlock
-                        Text="Calendar"
+                        Text="Version / About"
                         Style="{StaticResource SubheaderTextBlockStyle}" />
                     <TextBlock
-                        Text="This is the Calendar view. You can use this view to manage your schedule."
+                        Text="This is the Version / About view. You can use this view to manage your schedule."
                         Style="{StaticResource BodyTextBlockStyle}" />
                 </StackPanel>
             </StackPanel>
         </ScrollViewer>
+        <!--#endregion-->
 
         <!--<StackPanel
             BorderBrush="Azure"
@@ -122,43 +169,3 @@
         </StackPanel>-->
     </Grid>
 </Page>
-
-<!--
-    <RelativePanel
-            Grid.Row="1">
-            <Rectangle
-                x:Name="Rectangle1"
-                Fill="Red"
-                Height="50"
-                Width="50" />
-            <Rectangle
-                x:Name="Rectangle2"
-                Fill="Blue"
-                Height="50"
-                Width="50"
-                RelativePanel.RightOf="Rectangle1"
-                Margin="8,0,0,0" />
-            <Rectangle
-                x:Name="Rectangle3"
-                Fill="Green"
-                Height="50"
-                Width="50"
-                RelativePanel.AlignRightWithPanel="True" />
-            <Rectangle
-                x:Name="Rectangle4"
-                Fill="Yellow"
-                Height="50"
-                Width="50"
-                RelativePanel.Below="Rectangle3"
-                RelativePanel.AlignHorizontalCenterWith="Rectangle3"
-                Margin="0,8,0,0" />
-            <CalendarView
-                x:Name="CalenderView"
-                SelectionMode="Single"
-                IsGroupLabelVisible="True"
-                IsOutOfScopeEnabled="True"
-                Language="en"
-                CalendarIdentifier="GregorianCalendar" />
-        </RelativePanel>
-    -->
-    
