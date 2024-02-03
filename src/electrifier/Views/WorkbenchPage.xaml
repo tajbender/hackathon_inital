@@ -5,167 +5,65 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:viewmodels="using:electrifier.ViewModels"
+    xmlns:ui="using:CommunityToolkit.WinUI"
+    xmlns:controls="using:CommunityToolkit.WinUI.Controls"
     d:DataContext="{d:DesignInstance Type=viewmodels:WorkbenchViewModel}"
     mc:Ignorable="d">
 
-    <Grid
-        x:Name="ContentArea">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition
-                Width="*" />
-            <ColumnDefinition
-                Width="250" />
-        </Grid.ColumnDefinitions>
+    <Page.Resources>
+        <!--
+            If you reference an enum directly in UWP, you need to use it somewhere for the XamlTypeInfo reference to be generated...
+        -->
+        <!--<local:Animal
+            x:Key="MyAnimal">Cat</local:Animal>-->
+    </Page.Resources>
 
-        <!--#region Left Panel -->
+    <StackPanel>
+        <ComboBox
+            x:Name="AnimalPicker"
+            Header="Pick an Animal"
+            SelectedIndex="0" />
+        <!--<controls:SwitchPresenter
+            Padding="16"
+            TargetType="local:Animal"
+            Value="{Binding SelectedItem, ElementName=AnimalPicker}">
+            <controls:Case
+                Value="Cat">
+                <TextBlock
+                    FontSize="32"
+                    Text="🐈" />
+            </controls:Case>
+            <controls:Case
+                Value="Dog">
+                <TextBlock
+                    FontSize="32"
+                    Text="🐕" />
+            </controls:Case>
+            <controls:Case
+                Value="Bunny">
+                <TextBlock
+                    FontSize="32"
+                    Text="🐇" />
+            </controls:Case>
+            <controls:Case
+                Value="Llama">
+                <TextBlock
+                    FontSize="32"
+                    Text="🦙" />
+            </controls:Case>
+            <controls:Case
+                Value="Parrot">
+                <TextBlock
+                    FontSize="32"
+                    Text="🦜" />
+            </controls:Case>
+            <controls:Case
+                Value="Squirrel">
+                <TextBlock
+                    FontSize="32"
+                    Text="🐿" />
+            </controls:Case>
+        </controls:SwitchPresenter>-->
+    </StackPanel>
 
-        <ScrollViewer
-            Grid.Column="0"
-            IsTabStop="True"
-            IsVerticalScrollChainingEnabled="True"
-            HorizontalAlignment="Stretch"
-            VerticalAlignment="Top"
-            HorizontalScrollMode="Enabled"
-            HorizontalScrollBarVisibility="Auto"
-            VerticalScrollMode="Enabled"
-            VerticalScrollBarVisibility="Visible">
-            <!-- ZoomMode="Enabled" -->
-            <!-- ViewChanged="ScrollViewerControl_ViewChanged" -->
-            <Expander
-                BorderBrush="Blue"
-                IsExpanded="True"
-                ExpandDirection="Down"
-                HorizontalAlignment="Stretch"
-                VerticalAlignment="Stretch"
-                Header="This text is in the header">
-                <StackPanel>
-                    <!--<Image
-                        Source="https://learn.microsoft.com/windows/uwp/contacts-and-calendar/images/shoulder-tap-static-payload.png"
-                        AutomationProperties.Name="My UserName"
-                        MaxHeight="128"
-                        MaxWidth="128"
-                        HorizontalAlignment="Right"
-                        VerticalAlignment="Stretch"
-                        Stretch="None" />-->
-                    <StackPanel
-                        BorderBrush="DarkGray"
-                        BorderThickness="1"
-                        Grid.Row="0"
-                        Margin="12,0,12,24">
-                        <TextBlock
-                            Text="Welcome to the Workbench"
-                            Style="{StaticResource SubheaderTextBlockStyle}" />
-                        <TextBlock
-                            Text="This is the Workbench page. You can use this page to create and manage your projects."
-                            Style="{StaticResource BodyTextBlockStyle}" />
-                        <PersonPicture
-                            HorizontalAlignment="Right"
-                            VerticalAlignment="Center"
-                            ProfilePicture="https://learn.microsoft.com/windows/uwp/contacts-and-calendar/images/shoulder-tap-static-payload.png" />
-                    </StackPanel>
-                </StackPanel>
-            </Expander>
-        </ScrollViewer>
-        <!--#endregion-->
-
-        <!--#region Right Panel -->
-        <ScrollViewer
-            Grid.Column="1"
-            ZoomMode="Enabled"
-            IsTabStop="True"
-            IsVerticalScrollChainingEnabled="True"
-            HorizontalAlignment="Stretch"
-            VerticalAlignment="Stretch"
-            HorizontalScrollMode="Disabled"
-            VerticalScrollMode="Enabled"
-            VerticalScrollBarVisibility="Visible">
-            <!-- ViewChanged="ScrollViewerControl_ViewChanged" -->
-            <StackPanel>
-                <Expander
-                    BorderBrush="Yellow"
-                    IsExpanded="True"
-                    ExpandDirection="Down"
-                    VerticalAlignment="Stretch"
-                    Header="This text is in the header">
-
-                    <StackPanel>
-                        <TextBlock
-                            x:Uid="Settings_About"
-                            Style="{ThemeResource SubtitleTextBlockStyle}" />
-                        <Image
-                            Source="ms-appx:///Assets\LargeTile.scale-200.png"
-                            AutomationProperties.Name="cliff"
-                            MaxWidth="128"
-                            Stretch="None"
-                            MaxHeight="128"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Top" />
-                    </StackPanel>
-                </Expander>
-
-                <StackPanel
-                    BorderBrush="DarkRed"
-                    BorderThickness="1"
-                    Grid.Row="1"
-                    Margin="12,0,12,24">
-
-                    <StackPanel
-                        Margin="{StaticResource XSmallTopMargin}">
-                        <TextBlock
-                            x:Uid="Settings_About"
-                            Style="{ThemeResource SubtitleTextBlockStyle}" />
-                        <!--<TextBlock
-                            Text="{x:Static properties:Resources.XBindViewModelVersionDescriptionModeOneWay}"
-                            Style="{ThemeResource BodyTextBlockStyle}" />-->
-
-                        <TextBlock
-                            x:Uid="Settings_AboutDescription"
-                            Margin="{StaticResource XSmallTopMargin}"
-                            Style="{ThemeResource BodyTextBlockStyle}" />
-                        <HyperlinkButton
-                            x:Uid="SettingsPage_PrivacyTermsLink"
-                            Margin="{StaticResource SettingsPageHyperlinkButtonMargin}" />
-                    </StackPanel>
-
-                    <TextBlock
-                        Text="Version / About"
-                        Style="{StaticResource SubheaderTextBlockStyle}" />
-                    <TextBlock
-                        Text="This is the Version / About view. You can use this view to manage your schedule."
-                        Style="{StaticResource BodyTextBlockStyle}" />
-                </StackPanel>
-            </StackPanel>
-        </ScrollViewer>
-        <!--#endregion-->
-
-        <!--<StackPanel
-            BorderBrush="Azure"
-            BorderThickness="1"
-            Grid.Row="0"
-            Margin="12,0,12,24">
-            <TextBlock
-                Text="Welcome to the Workbench"
-                Style="{StaticResource SubheaderTextBlockStyle}" />
-            <TextBlock
-                Text="This is the Workbench page. You can use this page to create and manage your projects."
-                Style="{StaticResource BodyTextBlockStyle}" />
-            <PersonPicture
-                HorizontalAlignment="Right"
-                VerticalAlignment="Center"
-                ProfilePicture="https://learn.microsoft.com/windows/uwp/contacts-and-calendar/images/shoulder-tap-static-payload.png" />
-        </StackPanel>-->
-
-        <!--<StackPanel
-            BorderBrush="DarkRed"
-            BorderThickness="1"
-            Grid.Row="1"
-            Margin="12,0,12,24">
-            <TextBlock
-                Text="Calendar"
-                Style="{StaticResource SubheaderTextBlockStyle}" />
-            <TextBlock
-                Text="This is the Calendar view. You can use this view to manage your schedule."
-                Style="{StaticResource BodyTextBlockStyle}" />
-        </StackPanel>-->
-    </Grid>
 </Page>
