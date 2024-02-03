@@ -5,65 +5,117 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:viewmodels="using:electrifier.ViewModels"
-    xmlns:ui="using:CommunityToolkit.WinUI"
-    xmlns:controls="using:CommunityToolkit.WinUI.Controls"
     d:DataContext="{d:DesignInstance Type=viewmodels:WorkbenchViewModel}"
     mc:Ignorable="d">
 
+    <!--
+        xmlns:ui="using:CommunityToolkit.WinUI"
+        xmlns:controls="using:CommunityToolkit.WinUI.Controls"
+
+    
+        https://learn.microsoft.com/de-de/dotnet/communitytoolkit/windows/primitives/wrappanel
+    -->
+
     <Page.Resources>
-        <!--
-            If you reference an enum directly in UWP, you need to use it somewhere for the XamlTypeInfo reference to be generated...
-        -->
-        <!--<local:Animal
-            x:Key="MyAnimal">Cat</local:Animal>-->
+        <DataTemplate
+            x:Key="PhotoTemplate">
+            <Grid
+                Width="{Binding Width}"
+                Height="{Binding Height}"
+                Margin="0">
+                <Image
+                    HorizontalAlignment="Center"
+                    Stretch="UniformToFill">
+                    <Image.Source>
+                        <BitmapImage
+                            DecodePixelHeight="200"
+                            UriSource="{Binding Thumbnail}" />
+                    </Image.Source>
+                </Image>
+                <Border
+                    VerticalAlignment="Bottom">
+                    <Border.Background>
+                        <LinearGradientBrush
+                            EndPoint="0,1">
+                            <GradientStop
+                                Offset="0"
+                                Color="Transparent" />
+                            <GradientStop
+                                Offset="1"
+                                Color="#33000000" />
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <TextBlock
+                        Margin="5,20,5,5"
+                        VerticalAlignment="Bottom"
+                        Foreground="White"
+                        Text="{Binding Category}" />
+                </Border>
+            </Grid>
+        </DataTemplate>
+        <Style
+            TargetType="ListViewItem">
+            <!--  Change those values to change the WrapPanel's children alignment  -->
+            <Setter
+                Property="VerticalContentAlignment"
+                Value="Center" />
+            <Setter
+                Property="HorizontalContentAlignment"
+                Value="Center" />
+            <Setter
+                Property="Margin"
+                Value="0" />
+            <Setter
+                Property="Padding"
+                Value="0" />
+            <Setter
+                Property="MinWidth"
+                Value="0" />
+            <Setter
+                Property="MinHeight"
+                Value="0" />
+        </Style>
     </Page.Resources>
 
-    <StackPanel>
-        <ComboBox
-            x:Name="AnimalPicker"
-            Header="Pick an Animal"
-            SelectedIndex="0" />
-        <!--<controls:SwitchPresenter
-            Padding="16"
-            TargetType="local:Animal"
-            Value="{Binding SelectedItem, ElementName=AnimalPicker}">
-            <controls:Case
-                Value="Cat">
-                <TextBlock
-                    FontSize="32"
-                    Text="🐈" />
-            </controls:Case>
-            <controls:Case
-                Value="Dog">
-                <TextBlock
-                    FontSize="32"
-                    Text="🐕" />
-            </controls:Case>
-            <controls:Case
-                Value="Bunny">
-                <TextBlock
-                    FontSize="32"
-                    Text="🐇" />
-            </controls:Case>
-            <controls:Case
-                Value="Llama">
-                <TextBlock
-                    FontSize="32"
-                    Text="🦙" />
-            </controls:Case>
-            <controls:Case
-                Value="Parrot">
-                <TextBlock
-                    FontSize="32"
-                    Text="🦜" />
-            </controls:Case>
-            <controls:Case
-                Value="Squirrel">
-                <TextBlock
-                    FontSize="32"
-                    Text="🐿" />
-            </controls:Case>
-        </controls:SwitchPresenter>-->
-    </StackPanel>
-
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition
+                Height="Auto" />
+            <RowDefinition
+                Height="*" />
+        </Grid.RowDefinitions>
+        <StackPanel
+            Orientation="Horizontal"
+            Spacing="4">
+            <Button
+                Name="BtnAddRandomSizedImage"
+                Click="BtnAddRandomSizedImage_Click"
+                Content="Add random sized image" />
+            <Button
+                Name="BtnAddFixedSizedImage"
+                Click="BtnAddFixedSizedImage_Click"
+                Content="Add fixed sized image" />
+            <Button
+                Name="BtnSwitchOrientation"
+                Click="BtnSwitchOrientation_Click"
+                Content="Switch Orientation" />
+        </StackPanel>
+        <!-- ListView.ItemsSource="{x:Bind WrapPanelCollection, Mode=OneWay}" -->
+        <ListView
+            Name="WrapPanelContainer"
+            Grid.Row="1"
+            IsItemClickEnabled="True"
+            ItemTemplate="{StaticResource PhotoTemplate}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <!-- https://learn.microsoft.com/de-de/dotnet/communitytoolkit/windows/primitives/wrappanel -->
+                    <!--<controls1:WrapPanel
+                        x:Name="sampleWrapPanel"
+                        Padding="12"
+                        HorizontalSpacing="{Binding HorizontalSpacing, ElementName=ThisSamplePage, Mode=OneWay}"
+                        VerticalSpacing="{Binding VerticalSpacing, ElementName=ThisSamplePage, Mode=OneWay}" />-->
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+        </ListView>
+    </Grid>
 </Page>
