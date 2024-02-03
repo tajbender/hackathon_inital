@@ -1,11 +1,14 @@
-﻿# electrifier
+﻿# electrifier.Core
 A .NET Core application that allows users to manage a list of electronic devices.
 
 Table of Contents
 <!--TOC-->
-- [Build Status](#build-status)
-- [Getting Started](#getting-started)
-- [Prerequisites](#prerequisites)
+  - [Build Status](#build-status)
+    - [Getting Started](#getting-started)
+    - [Prerequisites](#prerequisites)
+- [Privacy Policy](#privacy-policy)
+- [Interpretation and Definitions](#interpretation-and-definitions)
+  - [Interpretation](#interpretation)
 <!--/TOC-->
 
 ## Build Status
